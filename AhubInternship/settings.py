@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 import os
 from pathlib import Path
-
+from decouple import config
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -70,6 +70,9 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'core.context_processors.current_year',
             ],
+            'libraries': {
+                'humanize': 'django.contrib.humanize.templatetags.humanize',
+            },
         },
     },
 ]
@@ -140,3 +143,21 @@ DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
 
 #making all CDN kinks to work
 CORS_ORIGIN_ALLOW_ALL = True
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'  # Use SMTP email backend
+EMAIL_HOST = 'smtp.gmail.com'  # SMTP server host
+EMAIL_PORT = 587  # SMTP server port
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+EMAIL_USE_TLS = True  # Use TLS encryption
+
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+  
+]
+
+
+
+
+AUTH_PROFILE_MODULE = 'forms.Biodata'
