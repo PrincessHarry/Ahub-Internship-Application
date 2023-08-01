@@ -116,10 +116,6 @@ def student_login(request):
 
 
 
-from .forms import ResetPasswordForm
-
-# ...
-
 def reset_password(request):
     form = ResetPasswordForm(request.POST or None)
     if request.method == 'POST' and form.is_valid():
@@ -193,7 +189,7 @@ def student_profile(request):
         return render(request, 'profile.html', {'biodata': biodata})
     except Biodata.DoesNotExist:
         
-        return render(request, 'profile.html', {'error_message': 'No biodata available'}, context)
+        return render(request, 'profile.html', {'error_message': 'No biodata available'})
 
 def contact_success(request):
     return render(request, 'contact_success.html')

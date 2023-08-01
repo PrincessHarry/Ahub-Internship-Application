@@ -7,3 +7,4 @@ class imageAdmin(admin.ModelAdmin):
 admin.site.register(StaffList, imageAdmin)
 admin.site.register(Proficiency)
 admin.site.register(Role)
+admin.site.register(GalleryItem)

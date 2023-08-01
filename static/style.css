@@ -616,8 +616,7 @@ body{
     }
 
     footer{
-      position: fixed;
-      bottom: 0;
+      position: absolute;
       width: 100%;
     }
     footer .social-links a i{
